@@ -1,12 +1,10 @@
 
-## ################################
+# Instructions:
 
-To run the app use yarn or node:
-`yarn && yarn start`
-#### OR
-`npm install && npm start`
+### To run the app use yarn or node:
+`yarn && yarn start` <b>OR</b> `npm install && npm start`
 
-## ################################
+<hr>
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
