@@ -1,7 +1,6 @@
 import React from 'react';
 import './modal.css';
 
-
 const Modal = (props) => {
   let { width, height, children, value, title } = props
   return(

@@ -1,7 +1,6 @@
 import React from 'react';
 import './circle.css';
 
-
 const Circle = (props) => {
   let { color } = props || '#fff';
   return(

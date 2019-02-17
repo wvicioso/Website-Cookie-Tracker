@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import { Modal, Button, Circle } from './components/index.js';
 import logo from './MH-S4-Logo.png';
 import './App.css';
-import { Modal, Button, Circle } from './components/index.js';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      circleColor: "",
+      circleColor: '',
       impressionCount: 0
     }
   }
@@ -30,9 +30,9 @@ class App extends Component {
 
   async checkCookies() {
     if (document.cookie) {
-      let cookies = document.cookie.split("; ");
-      for (var i = 0; i < cookies.length; i++) {
-        let cookieObj = cookies[i].split("=");
+      let cookies = document.cookie.split('; ');
+      for (let i = 0; i < cookies.length; i++) {
+        let cookieObj = cookies[i].split('=');
         if (cookieObj[1]) {
           this.setState({
             [cookieObj[0]]: cookieObj[1]
@@ -46,7 +46,7 @@ class App extends Component {
 
   assignCircleColor() {
     let randInt = Math.floor(Math.random() * 2),
-        color = "blue";
+        color = 'blue';
     if (randInt === 1) { color = 'red'; }
     document.cookie = `circleColor=${color};`;
     this.setState({
@@ -55,7 +55,7 @@ class App extends Component {
   }
 
   setInitialImpressionCount() {
-    document.cookie = "impressionCount=1;";
+    document.cookie = 'impressionCount=1;';
     this.setState({
       impressionCount: 1
     });
@@ -72,8 +72,8 @@ class App extends Component {
 
   delete_cookies() {
     let cookies = document.cookie.split('; ');
-    for (var i = 0; i < cookies.length; i++) {
-      let cookieObj = cookies[i].split("=");
+    for (let i = 0; i < cookies.length; i++) {
+      let cookieObj = cookies[i].split('=');
       document.cookie = `${cookieObj[0]}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
     }
     alert('All cookies deleted');
@@ -83,15 +83,15 @@ class App extends Component {
   render() {
     let color = (this.state.circleColor === 'blue' ? '#2196f3' : '#f44336')
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} alt="Mighty Hive logo" />
+      <div className='App'>
+        <header className='App-header'>
+          <img src={logo} alt='Mighty Hive logo' />
           <h1>Technical Solutions Engineer - Challenge</h1>
         </header>
 
         <Modal  width={300} height={300}>
-          <Modal width={200} height={100} title="Impressions:" value={this.state.impressionCount} />
-          <Modal width={200} height={100} title="Active color:" value={this.state.circleColor} />
+          <Modal width={200} height={100} title='Impressions:' value={this.state.impressionCount} />
+          <Modal width={200} height={100} title='Active color:' value={this.state.circleColor} />
           <Button action={this.delete_cookies.bind(this)} name={'Clear Cookies'} />
         </Modal>
 

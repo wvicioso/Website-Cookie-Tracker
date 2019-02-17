@@ -1,7 +1,6 @@
 import React from 'react';
 import './button.css';
 
-
 const Button = (props) => {
   let { width='auto', height='auto', action, name } = props;
   return(
