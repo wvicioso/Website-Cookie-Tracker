@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Modal, Button, Circle } from './components/index.js';
-import logo from './MH-S4-Logo.png';
 import './App.css';
+
+  const COLORS = {
+    green: ['#4caf50', 'Green'],
+    yellow: ['#ffeb3b', 'Yellow'],
+    purple: ['#9c27b0', 'Purple'],
+    blue: ['#2196f3', 'Blue'],
+    red: ['#f44336', 'Red'],
+    none: ['#fff', ''],
+  }
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      circleColor: '',
+      circleColor: 'none',
       impressionCount: 0
     }
   }
@@ -45,9 +54,28 @@ class App extends Component {
   }
 
   assignCircleColor() {
-    let randInt = Math.floor(Math.random() * 2),
-        color = 'blue';
-    if (randInt === 1) { color = 'red'; }
+    let randInt = Math.floor(Math.random() * 4),
+        color = '#fff'
+        switch (randInt) {
+          case 0:
+            color = 'green';
+            break;
+          case 1:
+            color = 'yellow';
+            break;
+          case 2:
+            color = 'purple';
+            break;
+          case 3:
+            color = 'blue';
+            break;
+          case 4:
+            color = 'red';
+            break;
+          default:
+            color = '#fff';
+        }
+
     document.cookie = `circleColor=${color};`;
     this.setState({
       circleColor: color
@@ -81,22 +109,26 @@ class App extends Component {
   }
 
   render() {
-    let color = (this.state.circleColor === 'blue' ? '#2196f3' : '#f44336')
+    let color = COLORS[this.state.circleColor]
     return (
       <div className='App'>
         <header className='App-header'>
-          <img src={logo} alt='Mighty Hive logo' />
-          <h1>Technical Solutions Engineer - Challenge</h1>
+          <h1>Website Cookie Tracker</h1>
+          <p>
+            When you first visit this site, 1 of 5 colors will be displayed. A cookie will be created to track which color was displayed.
+            Every subsequent visit will only display the color that was persisted during your first visit.
+            This site will also count the number of times you have seen the color. To reset/clear all cookies, click the button below.
+          </p>
         </header>
 
         <Modal  width={300} height={300}>
           <Modal width={200} height={100} title='Impressions:' value={this.state.impressionCount} />
-          <Modal width={200} height={100} title='Active color:' value={this.state.circleColor} />
+          <Modal width={200} height={100} title='Active color:' value={color[1]} />
           <Button action={this.delete_cookies.bind(this)} name={'Clear Cookies'} />
         </Modal>
 
         <Modal  width={300} height={300}>
-          <Circle color={color} />
+          <Circle color={color[0]} />
         </Modal>
       </div>
     );

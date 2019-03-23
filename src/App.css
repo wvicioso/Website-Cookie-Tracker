@@ -24,6 +24,14 @@
   padding-bottom: 50px;
 }
 
+.App-header p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #42424290;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
 
 h1 {
   font-weight: 300;
